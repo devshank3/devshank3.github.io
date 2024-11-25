@@ -1,7 +1,7 @@
 [Shankar Hariharan K](https://devshank.com/)
 
 <h1 align='center'>
-  Hi ! :wave: I'm Shankar
+  Hi ! I'm Shankar
 </h1>
 
 I'm a Software Engineer at [Siemens Healthineers - MR myExam Suite](https://www.siemens-healthineers.com/en-in/magnetic-resonance-imaging/technologies-and-innovations/my-exam-companion)
@@ -22,7 +22,3 @@ I'm a Software Engineer at [Siemens Healthineers - MR myExam Suite](https://www.
 ![GitHub stats](https://github-readme-stats.vercel.app/api?username=devshank3&show_icons=true&hide_border=true&theme=chartreuse-dark)
 <br><br>
 ![GitHub stats](https://github-readme-stats.vercel.app/api/top-langs/?username=devshank3&layout=compact&theme=github_dark)
-
-  <img align="left" alt="shankar's Discord" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/discord.svg" />
-</a>
-<br><br>
