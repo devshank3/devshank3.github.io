@@ -1,4 +1,4 @@
-[Shankar Hariharan K](https://devshank.com/)
+[Shankar Hariharan K](https://devshank.me/)
 
 <h1 align='center'>
   Hi! I'm Shankar
