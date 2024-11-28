@@ -2,7 +2,6 @@
 layout: post
 title:  "First post - Minima theme"
 date:   2024-11-28
-categories: sandbox
 mermaid: true
 ---
 
