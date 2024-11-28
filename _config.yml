@@ -1,3 +1,28 @@
+title: 🚀👨🏼‍💻🛸 Shankar's Page
+description: >- # this means to ignore newlines until "baseurl:"
+  This is my personal page, which is under construction. 
+  I will be posting about my projects, thoughts, and other things that I find interesting. Stay tuned!
+baseurl: "" # the subpath of your site, e.g. /blog
+locale: en_US
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: ShankarHaran3
+github_username:  devshank3
+linkedin_username: shankar-hariharan-k
+
+author:
+  name: Shankar Hariharan K
+
+# Build settings
 theme: minima
-title: Shankar Hariharan's homepage
-description: Bookmark this website to keep an eye on my project updates!
+plugins:
+  - jekyll-feed
+  - jekyll-remote-theme # to allow having minima v3 (see https://github.com/jekyll/minima/issues/419#issuecomment-558693485)
+  - jemoji
+
+# to allow having minima v3 (see https://github.com/jekyll/minima/issues/419#issuecomment-558693485)
+remote_theme: jekyll/minima
+
+minima:
+  skin: dark
+  social_links:
+    github: devshank3
