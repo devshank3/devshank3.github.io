@@ -23,6 +23,6 @@ plugins:
 # remote_theme: jekyll/minima
 
 minima:
-  # skin: dark
+  skin: dark
   social_links:
     github: devshank3
