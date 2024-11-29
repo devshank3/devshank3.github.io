@@ -1,5 +1,7 @@
-<h1 align='center'>
+<h2 align='left'>
   Hello 👋 I'm Shankar Hariharan
-</h1>
+</h2>
 
-I'm a Software Engineer at [Siemens Healthineers - MR myExam Suite](https://www.siemens-healthineers.com/en-in/magnetic-resonance-imaging/technologies-and-innovations/my-exam-companion)
+I'm a Software developer at [Siemens Healthineers MR-myExam](https://www.siemens-healthineers.com/en-in/magnetic-resonance-imaging/technologies-and-innovations/my-exam-companion)
+
+Read more [about me here](https://devshank3.github.io/about/)

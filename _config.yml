@@ -5,9 +5,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 locale: en_US
 url: "https://devshank3.github.io/"
-twitter_username: ShankarHaran3
-github_username:  devshank3
-linkedin_username: shankar-hariharan-k
+
 
 author:
   name: Shankar Hariharan K
@@ -18,7 +16,7 @@ remote_theme: jekyll/minima
 header_pages:
   - about.md
   - tags.md
-  
+
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
@@ -28,3 +26,5 @@ minima:
   social_links:
     - { platform: github, user_url: "https://github.com/devshank3/" }
     - { platform: linkedin, user_url: "https://linkedin.com/in/shankar-hariharan-k"}
+    - { platform: twitter,        user_url: "https://twitter.com/ShankarHaran3" }
+    - { platform: x,              user_url: "https://x.com/ShankarHaran3" }
