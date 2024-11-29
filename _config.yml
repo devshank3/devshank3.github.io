@@ -14,15 +14,7 @@ author:
 
 # Build settings
 theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-remote-theme # to allow having minima v3 (see https://github.com/jekyll/minima/issues/419#issuecomment-558693485)
-  - jemoji
-
-# to allow having minima v3 (see https://github.com/jekyll/minima/issues/419#issuecomment-558693485)
-remote_theme: jekyll/minima
 
 minima:
-  skin: dark
   social_links:
     github: devshank3
