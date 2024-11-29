@@ -15,8 +15,12 @@ remote_theme: jekyll/minima
 
 header_pages:
   - about.md
+  - contact.md
   - tags.md
 
+page_excerpts:
+  enabled: true
+  
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
