@@ -13,8 +13,18 @@ author:
   name: Shankar Hariharan K
 
 # Build settings
-theme: minima
+# theme: minima
+
+remote_theme: jekyll/minima
+
+header_pages:
+  - about.md
+
+plugins:
+  - jekyll-feed
+  - jekyll-remote-theme
 
 minima:
+  skin: solarized-dark
   social_links:
     github: devshank3
