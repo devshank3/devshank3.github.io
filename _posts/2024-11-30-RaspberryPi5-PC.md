@@ -9,7 +9,9 @@ date:   2024-11-29
 
 In this post, I will be covering the process of how I built a palm sized PC using the Raspberry Pi 5. Ofcourse its going to boot from NVMe ssd. I think its compact and cool.
 
-`When RPI 5 got launched, out of all the features I was really excited about the dual camera ports, still looking forward to plugging dual cameras for some stereo use cases`
+<div class="okbox" markdown="1">
+When RPI 5 got launched, out of all the features I was really excited about the dual camera ports, still looking forward to plugging dual cameras for some stereo use cases
+</div>
 
 ## Materials used
 
@@ -24,7 +26,7 @@ Waveshare components
 
 - EVM 256GB 2242 NVMe SSD
 
-![alt text](../resources/RPI5PC/RpiMidAssemble.jpg)
+![alt text](/resources/RPI5PC/RpiMidAssemble.jpg)
 
 
 ## Step-by-Step Guide
