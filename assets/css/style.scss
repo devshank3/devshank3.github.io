@@ -1,0 +1,44 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import
+  "minima/skins/{{ site.minima.skin | default: 'classic' }}",
+  "minima/initialize";
+
+//------------------------------------------------------------------------------
+//--- FRAMED TEXT BOXES --------------------------------------------------------
+//------------------------------------------------------------------------------
+
+// Common definitions for a set of framed text boxes
+.framedbox, .okbox, .warnbox, .errorbox {
+    border-radius: 10px;
+    border: solid $framed-box-color;
+    padding: 10px 10px 0px 10px;
+    background: transparentize($framed-box-color,0.95);
+    background-position: 8px center;
+    margin-bottom: 10px;
+  }
+  
+  // Customize some boxes by adding an icon on the left.
+  // The icons are supposed to be of width equal to 30px
+  .okbox {
+    border: solid $ok-box-color;
+    background: transparentize($ok-box-color,0.95) url('{{ site.baseurl }}/assets/frameboximg/ok-icon.png');
+  }
+  .warnbox {
+    border: solid $warn-box-color;
+    background: transparentize($warn-box-color,0.95) url('{{ site.baseurl }}/assets/frameboximg/warn-icon.png');
+  }
+  .errorbox {
+    border: solid $error-box-color;
+    background: transparentize($error-box-color,0.95) url('{{ site.baseurl }}/assets/frameboximg/error-icon.png');
+  }
+  
+  // Adjust the spacing and background syle. For some reason unkown to me, these
+  // MUST appear after having set the background image.
+  .okbox, .warnbox, .errorbox {
+    padding-left: 50px;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+  }
