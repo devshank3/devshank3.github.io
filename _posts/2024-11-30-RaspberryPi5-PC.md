@@ -7,29 +7,41 @@ date:   2024-11-29
 
 ## Introduction
 
-In this post, I will be covering the process of how I built a palm sized PC using the Raspberry Pi 5. Ofcourse its going to boot from NVMe ssd. I think its compact and cool.
+In this post, I will be covering the process of how I built a palm sized PC using the Raspberry Pi 5. And its going to boot from NVMe ssd. I think its compact and cool.
 
 <div class="okbox" markdown="1">
 When RPI 5 got launched, out of all the features I was really excited about the dual camera ports, still looking forward to plugging dual cameras for some stereo use cases
 </div>
 
-## Materials used
+## Bill of materials
 
 Official R-Pi components 
-- Raspberry Pi 5 8GB
-- Official Raspberry Pi 5 Active Cooler
+- Raspberry Pi 5 8GB - [Buy Link](https://www.pishop.us/product/raspberry-pi-5-8gb/) - $80
+- Official Raspberry Pi 5 Active Cooler - [Buy Link](https://www.pishop.us/product/raspberry-pi-active-cooler/) - $6.45
 
 Waveshare components
-- 27W USB Type-C Power Supply, PD Power Supply, Suitable for Raspberry Pi 5
-- Clear Acrylic Case for Raspberry Pi 5 (Supports installing Official Active Cooler)
-- PCIe To M.2 HAT+ for Raspberry Pi 5
+- 27W USB Type-C Power Supply, PD Power Supply, Suitable for Raspberry Pi 5 - [Buy Link](https://www.waveshare.com/product/raspberry-pi/boards-kits/raspberry-pi-5/psu-27w-usb-c.htm?___SID=U) - $8
+- Clear Acrylic Case for Raspberry Pi 5 (Supports installing Official Active Cooler) - [Buy Link](https://www.waveshare.com/product/raspberry-pi/boards-kits/raspberry-pi-5/pi5-case-f.htm?___SID=U) - $4
+- PCIe To M.2 HAT+ for Raspberry Pi 5 - [Buy Link](https://www.waveshare.com/pcie-to-m.2-hat-plus.htm?sku=26583) - $9
 
-- EVM 256GB 2242 NVMe SSD
+- EVM 256GB 2242 NVMe SSD - $22
 
-![alt text](/resources/RPI5PC/RpiMidAssemble.jpg)
+So the BOM totals about ~ $130
 
 
-## Step-by-Step Guide
+## Hardware assembly
+
+Its pretty straight forward
+
+
+| Slot the Active cooler on the Raspberry Pi and attach the power + pwm cord | Start assembling the acrylic case keeping the Rpi in center, Attach the stoppers provided to base. |
+|-------------|---------------|
+| <img src="../resources/RPI5PC/RpiCoolerAssembly.jpg" width="440" height="Auto"> |  <img src="../resources/RPI5PC/RpiMidAssemble.jpg" width="440" height="Auto"> |
+
+| Install the PCIe To M.2 HAT with the preferred SSD ([refer to official tutorial](https://www.youtube.com/watch?v=yysDtXYFf-0)) | Close the shell and ensure that the nut and bolt stacks with M.2 adapter well and its sturdy |
+|-------------|---------------|
+| <img src="../resources/RPI5PC/CaseM2SlotTop.jpg" width="440" height="Auto"> | <img src="../resources/RPI5PC/FinalClosed.jpg" width="440" height="Auto"> |
+
 
 ### Step 1: Prepare the MicroSD Card
 
