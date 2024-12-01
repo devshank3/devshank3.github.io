@@ -24,10 +24,17 @@ Waveshare components
 - Clear Acrylic Case for Raspberry Pi 5 (Supports installing Official Active Cooler) - [Buy Link](https://www.waveshare.com/product/raspberry-pi/boards-kits/raspberry-pi-5/pi5-case-f.htm?___SID=U) - $4
 - PCIe To M.2 HAT+ for Raspberry Pi 5 - [Buy Link](https://www.waveshare.com/pcie-to-m.2-hat-plus.htm?sku=26583) - $9
 
+Others 
+
 - EVM 256GB 2242 NVMe SSD - $22
+- Micro SD Card 32GB (min) (not needed if you can burn RPi OS directly to SSD)
 
 So the BOM totals about ~ $130
 
+And some peripherals for HMI
+- Monitor
+- Keyboard and Mouse
+---
 
 ## Hardware assembly
 
@@ -38,50 +45,56 @@ Its pretty straight forward
 |-------------|---------------|
 | <img src="/resources/RPI5PC/RpiCoolerAssembly.jpg" width="440" height="Auto"> |  <img src="/resources/RPI5PC/RpiMidAssemble.jpg" width="440" height="Auto"> |
 
-| Install the PCIe To M.2 HAT with the preferred SSD ([refer to official tutorial](https://www.youtube.com/watch?v=yysDtXYFf-0)) | Close the shell and ensure that the nut and bolt stacks with M.2 adapter well and its sturdy |
+| Install the PCIe To M.2 HAT with the preferred SSD ([refer to official tutorial](https://www.youtube.com/watch?v=yysDtXYFf-0)) | Close the shell and ensure that the standoff stacks with M.2 adapter well and its sturdy |
 |-------------|---------------|
 | <img src="/resources/RPI5PC/CaseM2SlotTop.jpg" width="440" height="Auto"> | <img src="/resources/RPI5PC/FinalClosed.jpg" width="440" height="Auto"> |
 
 
-### Step 1: Prepare the MicroSD Card
+### Power supply setup
 
-1. Download the latest Raspberry Pi OS from the official Raspberry Pi website.
-2. Use a tool like Balena Etcher to flash the OS image onto the MicroSD card.
-3. Insert the MicroSD card into the Raspberry Pi 5.
+When RPI 5 got launched with 5V 5A USB C PD power requirement, it was quite surprising because 5v 5a is not typical from USB-PD power supplies. 
+But with the official AC adapter and other third party suppliers spawned this custom USB-PD power supply that can negotiate 5.1v 5a and much more specs.
 
-### Step 2: Assemble the Hardware
+I got one from waveshare as mentioned in BOM.
 
-1. Place the Raspberry Pi 5 into its case.
-2. Attach the heatsinks or cooling fan to the Raspberry Pi 5.
-3. Connect the HDMI cable to the Raspberry Pi and your monitor.
-4. Plug in the USB keyboard and mouse.
-5. Connect the power supply to the Raspberry Pi 5.
+But still RPi can be powered from 5v 3a which is typically negotiated from a USB-PD power supply, if this happens the USB ports will be power limited to 600ma as opposed to the full 1.6 amps. This can be adequate for most applications.
 
-### Step 3: Initial Setup
+---
 
-1. Power on the Raspberry Pi 5 by plugging in the power supply.
-2. Follow the on-screen instructions to complete the initial setup of the Raspberry Pi OS.
-3. Connect to the internet using an Ethernet cable or Wi-Fi.
+## Raspberry Pi OS setup
 
-### Step 4: Install Essential Software
+<div class="framedbox" markdown="1">
+With RPi 5 bringing in a PCIe slot, booting from NVMe SSD is going to be direct and easier, rather than using earlier hacks and mods. 
 
-1. Open the terminal on your Raspberry Pi.
-2. Update the package list and upgrade installed packages:
-    ```sh
-    sudo apt update
-    sudo apt upgrade
-    ```
-3. Install any additional software you need, such as a web browser, office suite, or programming tools.
+There is the official M.2 PCIe HAT and plethora of other third party variants in the market. 
 
-### Step 5: Customize Your Raspberry Pi PC
+I bought a nicer and compact one again from waveshare itself, because I already had a 2242 SSD.
+</div>
 
-1. Change the desktop background and theme to personalize your setup.
-2. Configure the system settings to your preference.
-3. Install any additional peripherals or accessories you need.
+This can be done is many ways with the official Raspberry Pi Imager,
 
-## Conclusion
+First install the [RPi imager](https://www.raspberrypi.com/software/), 
 
-Congratulations! You have successfully built your own Raspberry Pi 5 PC. This compact and powerful computer can be used for a variety of tasks, from web browsing and office work to programming and media consumption. Enjoy your new Raspberry Pi 5 PC!
+- If you can find a way to directly burn the RPi OS to the NVMe SSD, by using NVMe to USB adapter then well and good.
+
+- Else, get a micro SD card and burn the image first on to it. 
+    <div class="framedbox" markdown="1">
+    Lot of things can be pre-configured like the login creds to WiFi creds etc. using the RPi imager. Please configure things as needed.
+    </div>
+- Insert the SD card and plug in all the peripherals and click on the power button
+- Now, once we are in the RPi desktop, we can either clone the existing image from SD card or we can install a new RPi OS on to the NVMe SSD again using the RPi imager which comes preinstalled in the RPi OS.
+- For detailed installation guide refer to this [How to Add an SSD To Your Raspberry Pi 5 with the M.2 HAT
+](https://core-electronics.com.au/guides/how-to-add-an-ssd-to-your-raspberry-pi-5-with-the-m.2-hat/#AW0G3JX) 
+- Once the installation or cloning is done, we need to change the boot order
+    - Open raspi-config tool using `sudo raspi-config`
+    - Navigate to Advanced Options > Boot Order and then select NVME/USB Boot
+- Option stuff - we can enable the Gen 3 PCIE for faster I/O
+- And now we can reboot !
+
+After rebooting it should boot from SSD and the boot speed is clearly observable. 
+
+
+
 
 ## Additional Resources
 
