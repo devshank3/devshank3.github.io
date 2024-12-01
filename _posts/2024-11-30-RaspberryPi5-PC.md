@@ -36,11 +36,11 @@ Its pretty straight forward
 
 | Slot the Active cooler on the Raspberry Pi and attach the power + pwm cord | Start assembling the acrylic case keeping the Rpi in center, Attach the stoppers provided to base. |
 |-------------|---------------|
-| <img src="../resources/RPI5PC/RpiCoolerAssembly.jpg" width="440" height="Auto"> |  <img src="../resources/RPI5PC/RpiMidAssemble.jpg" width="440" height="Auto"> |
+| <img src="/resources/RPI5PC/RpiCoolerAssembly.jpg" width="440" height="Auto"> |  <img src="/resources/RPI5PC/RpiMidAssemble.jpg" width="440" height="Auto"> |
 
 | Install the PCIe To M.2 HAT with the preferred SSD ([refer to official tutorial](https://www.youtube.com/watch?v=yysDtXYFf-0)) | Close the shell and ensure that the nut and bolt stacks with M.2 adapter well and its sturdy |
 |-------------|---------------|
-| <img src="../resources/RPI5PC/CaseM2SlotTop.jpg" width="440" height="Auto"> | <img src="../resources/RPI5PC/FinalClosed.jpg" width="440" height="Auto"> |
+| <img src="/resources/RPI5PC/CaseM2SlotTop.jpg" width="440" height="Auto"> | <img src="/resources/RPI5PC/FinalClosed.jpg" width="440" height="Auto"> |
 
 
 ### Step 1: Prepare the MicroSD Card
