@@ -9,7 +9,9 @@ date:   2024-12-11
 
 In this blog post, I will delve deep into the realms of development, specifically on a project that was developed four years ago - JetScan, 3D scanner that uses the Nvidia Jetson board and Intel Realsense. This is not your usual technical analysis of the project, more of examining the mindset, motivations, and thought processes that went into its creation.
 
-![](/resources/JetScan/Jetscan.jpeg)
+<p align="center">
+  <img src="/resources/JetScan/Jetscan.jpeg" width="440" height="Auto" title="hover text">
+</p>
 
 ### Section 1: The Genesis of JetScan
 
