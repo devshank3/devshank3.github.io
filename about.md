@@ -5,6 +5,7 @@ permalink: /about/
 ---
 
 ## About Me
+![](/resources/AboutmeShank.jpg)
 
 Hey! I'm Shankar Hariharan K. Currently developing and testing software (part of [myExam](https://www.siemens-healthineers.com/en-in/magnetic-resonance-imaging/technologies-and-innovations/my-exam-companion) team) for MR machines (at Siemens Healthineers).  
 
