@@ -40,7 +40,4 @@ Summarize the main points of your psychoanalysis and the insights you have gaine
 Remember, the purpose of this blog post is not only to explore the technical aspects of your project but to delve deeper into the psychological aspects of your development process. It's about understanding the 'why' behind your decisions and the emotional journey that accompanies the creation of a project like JetScan.
 
 Note: While writing this blog post, ensure to maintain a balance between technical jargon and accessible language to keep your readers engaged and make the content understandable to a wider audience.
-
-
-I will complete this blog when baby hippo rolls !
 ---
