@@ -16,6 +16,11 @@ Currently I stay in Bengaluru.
 
 I graduated from Vellore Institute of Technology(VIT) with Bachelor's degree in Electronics and Instrumentation Engineering.
 
+### Tech Stuffs
+
+
+### Projects Currently I'm working on 
+
 ### Interests
 - Tech ⚙️🤖💻🛠️
 - Outdoors 🏞
