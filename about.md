@@ -21,10 +21,10 @@ I graduated from Vellore Institute of Technology(VIT) with Bachelor's degree in 
 
 ### Projects Currently I'm working on 
 
-| X_pos Orig vs Pred | Y_pos Orig vs Pred |
+|  |  |
 |-------------|---------------|
-| <img src="results/exp_1/pred_x_orig.png" width="440"> |  <img src="results/exp_1/pred_y_orig.png" width="440"> |
-| <img src="results/exp_1/x_pos_time.png" width="440"> | <img src="results/exp_1/y_pos_time.png" width="440"> |
+|  |   |
+|  |  |
 
 ### Interests
 - Tech ⚙️🤖💻🛠️
