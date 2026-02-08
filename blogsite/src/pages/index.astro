@@ -1,0 +1,29 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>🙋 Hello, Stranger!</h1>
+			<p>Stay tuned for exciting content! 🚀</p>
+			<div style="text-align: center;">
+				<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnQwd25qaW81djkzbnkwZGlleWF0eG1vZW55MTYxeDh2bW80dnA4MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Mah9dFWo1WZX0WM62Q/giphy.gif" alt="Welcome animation" />
+			</div>
+			<p>Welcome to my blog - {SITE_TITLE}! This is where I share my thoughts, projects, 
+				and adventures in the world of technology and beyond. 
+				Stay tuned for exciting content!
+			</p>
+			
+		</main>
+		<Footer />
+	</body>
+</html>

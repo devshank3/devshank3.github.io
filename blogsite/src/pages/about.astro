@@ -1,0 +1,80 @@
+---
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="About Me"
+	description="About me page for my personal blog built with Astro."
+	pubDate={new Date('February 08 2026')}
+	heroImage={AboutHeroImage}
+>
+	<div class="space-y-8">
+		<!-- Introduction -->
+		<section>
+			<h2 class="text-3xl font-bold mb-4">Hey, I'm Shankar Hariharan K 👋</h2>
+			<p class="text-lg text-gray-700 leading-relaxed">
+				Currently developing and testing software for MR machines at <strong>Siemens Healthineers</strong> as part of the myExam team. 
+				Based in <strong>Bengaluru</strong>, passionate about technology and solving complex problems.
+			</p>
+		</section>
+
+		<!-- Education -->
+		<section>
+			<h3 class="text-2xl font-bold mb-4">Education 🎓</h3>
+			<div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+				<p class="text-lg font-semibold">Bachelor's Degree in Electronics and Instrumentation Engineering</p>
+				<p class="text-gray-600">Vellore Institute of Technology (VIT)</p>
+			</div>
+		</section>
+
+		<!-- Current Work -->
+		<section>
+			<h3 class="text-2xl font-bold mb-4">Currently Working On 💼</h3>
+			<p class="text-gray-700 leading-relaxed">
+				Software development and testing for MR (Magnetic Resonance) machines at Siemens Healthineers, 
+				ensuring reliability and performance in medical imaging equipment.
+			</p>
+		</section>
+
+		<!-- Interests -->
+		<section>
+			<h3 class="text-2xl font-bold mb-4">Interests & Passions ✨</h3>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div class="flex items-center space-x-3">
+					<span class="text-3xl">⚙️</span>
+					<p class="text-lg">Tech & Engineering</p>
+				</div>
+				<div class="flex items-center space-x-3">
+					<span class="text-3xl">🤖</span>
+					<p class="text-lg">AI & Automation</p>
+				</div>
+				<div class="flex items-center space-x-3">
+					<span class="text-3xl">🏞️</span>
+					<p class="text-lg">Outdoors & Nature</p>
+				</div>
+				<div class="flex items-center space-x-3">
+					<span class="text-3xl">🏍️</span>
+					<p class="text-lg">Bengaluru Traffic Adventures</p>
+				</div>
+				<div class="flex items-center space-x-3">
+					<span class="text-3xl">🌌</span>
+					<p class="text-lg">Exploring What's Next</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section>
+			<h3 class="text-2xl font-bold mb-4">Let's Connect 🔗</h3>
+			<p class="text-gray-700 leading-relaxed mb-4">
+				Feel free to reach out to me through the links below. I'd love to hear from you!
+			</p>
+		</section>
+
+		<!-- Closing -->
+		<section class="text-center py-8 border-t pt-8">
+			<p class="text-gray-600 italic">Thank you for visiting my page! 🙏</p>
+		</section>
+	</div>
+</Layout>
