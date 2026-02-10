@@ -8,7 +8,7 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
 ---
 
 <html lang="en">
@@ -52,6 +52,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.tags {
+				margin-top: 1em;
+			}
+			.tag {
+				display: inline-block;
+				background: #e0e7ff;
+				color: #2a4d9b;
+				border-radius: 6px;
+				padding: 0.2em 0.7em;
+				margin-right: 0.5em;
+				text-decoration: none;
+				font-size: 0.9em;
+			}
+			.tag:hover {
+				background: #c7d2fe;
+			}
 		</style>
 	</head>
 
@@ -78,6 +94,14 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+					{tags.length > 0 && (
+						<div class="tags">
+							Tags:
+							{tags.map(tag => (
+								<a href={`/tags/${tag}`} class="tag">{tag}</a>
+							))}
+						</div>
+					)}
 				</div>
 			</article>
 		</main>

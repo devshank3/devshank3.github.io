@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog');
+    const tags = new Set();
+    for (const post of posts) {
+        if (post.data.tags) {
+            for (const tag of post.data.tags) tags.add(tag);
+        }
+    }
+    return Array.from(tags).map(tag => ({
+        params: { tag },
+        props: { tag },
+    }));
+}
+
+const { tag } = Astro.props as { tag: string };
+const posts = (await getCollection('blog')).filter(post => post.data.tags?.includes(tag));
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={`Tag: ${tag} | ${SITE_TITLE}`} description={`Posts tagged with "${tag}"`} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <h1>Posts tagged with "<span style="color:#2a4d9b">{tag}</span>"</h1>
+            {posts.length > 0 ? (
+                <ul>
+                    {posts.map(post => (
+                        <li>
+                            <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No posts found for this tag.</p>
+            )}
+            <p style="margin-top:2em;"><a href="/tags">← All Tags</a></p>
+        </main>
+        <Footer />
+    </body>
+</html>

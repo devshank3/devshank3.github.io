@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+
+const posts = await getCollection('blog');
+const tagMap = new Map();
+
+for (const post of posts) {
+    if (post.data.tags) {
+        for (const tag of post.data.tags) {
+            if (!tagMap.has(tag)) tagMap.set(tag, []);
+            tagMap.get(tag).push(post);
+        }
+    }
+}
+const tags = Array.from(tagMap.keys()).sort();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={`Tags | ${SITE_TITLE}`} description="Browse all tags used in the blog" />
+        <style>
+            main {
+                width: 100%;
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 2em 1em;
+            }
+            .tags-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1em;
+                list-style: none;
+                padding: 0;
+                margin: 2em 0;
+            }
+            .tags-list li {
+                background: #f0f4ff;
+                border-radius: 8px;
+                padding: 0.5em 1em;
+            }
+            .tags-list a {
+                text-decoration: none;
+                color: #2a4d9b;
+                font-weight: bold;
+            }
+            .tags-list a:hover {
+                text-decoration: underline;
+                color: #1d3557;
+            }
+        </style>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <h1>Tags</h1>
+            <ul class="tags-list">
+                {tags.map(tag => (
+                    <li>
+                        <a href={`/tags/${tag}`}>{tag} ({tagMap.get(tag).length})</a>
+                    </li>
+                ))}
+            </ul>
+        </main>
+        <Footer />
+    </body>
+</html>
