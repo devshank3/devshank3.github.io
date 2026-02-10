@@ -6,9 +6,12 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+	prevPost?: CollectionEntry<'blog'>;
+	nextPost?: CollectionEntry<'blog'>;
+};
 
-const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags = [], prevPost, nextPost } = Astro.props;
 ---
 
 <html lang="en">
@@ -68,6 +71,24 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro
 			.tag:hover {
 				background: #c7d2fe;
 			}
+			.post-navigation {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 2em;
+				padding-top: 1em;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.post-navigation a {
+				text-decoration: none;
+				color: rgb(var(--black));
+				transition: color 0.2s;
+			}
+			.post-navigation a:hover {
+				color: rgb(var(--accent));
+			}
+			.next-post {
+				margin-left: auto;
+			}
 		</style>
 	</head>
 
@@ -102,6 +123,19 @@ const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro
 							))}
 						</div>
 					)}
+					
+					<div class="post-navigation">
+						{prevPost && (
+							<a href={`/blog/${prevPost.id}/`} class="prev-post">
+								← {prevPost.data.title}
+							</a>
+						)}
+						{nextPost && (
+							<a href={`/blog/${nextPost.id}/`} class="next-post">
+								{nextPost.data.title} →
+							</a>
+						)}
+					</div>
 				</div>
 			</article>
 		</main>
