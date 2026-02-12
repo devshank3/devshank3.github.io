@@ -1,5 +1,6 @@
 ---
 title: 'This is a random page'
+author: 'Shank'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Feb 10 2026'
 heroImage: '../../assets/blog-placeholder-3.jpg'
