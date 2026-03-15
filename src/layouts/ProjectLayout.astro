@@ -1,0 +1,183 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'projects'>['data'] & {
+	prevProject?: CollectionEntry<'projects'>;
+	nextProject?: CollectionEntry<'projects'>;
+};
+
+const { title, author, description, pubDate, updatedDate, heroImage, github, tags = [], prevProject, nextProject } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={heroImage} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 900px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+			.author {
+				font-size: 0.95em;
+				color: rgb(var(--gray));
+				margin-bottom: 0.5em;
+			}
+			.project-links {
+				margin-bottom: 1em;
+				display: flex;
+				gap: 1em;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.github-link {
+				display: inline-block;
+				background: #000;
+				color: white;
+				border-radius: 6px;
+				padding: 0.5em 1em;
+				text-decoration: none;
+				font-weight: 600;
+				transition: background 0.2s;
+			}
+			.github-link:hover {
+				background: #333;
+			}
+			.tags {
+				margin-top: 1em;
+			}
+			.tag {
+				display: inline-block;
+				background: #e0e7ff;
+				color: #2a4d9b;
+				border-radius: 6px;
+				padding: 0.2em 0.7em;
+				margin-right: 0.5em;
+				text-decoration: none;
+				font-size: 0.9em;
+			}
+			.tag:hover {
+				background: #c7d2fe;
+			}
+			.post-navigation {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 2em;
+				padding-top: 1em;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.post-navigation a {
+				text-decoration: none;
+				color: rgb(var(--black));
+				transition: color 0.2s;
+			}
+			.post-navigation a:hover {
+				color: rgb(var(--accent));
+			}
+			.next-post {
+				margin-left: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				{heroImage && <div class="hero-image"><Image width={1020} height={510} src={heroImage} alt={title} /></div>}
+				<div class="prose">
+					<div class="title">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+							{updatedDate && (
+								<div class="last-updated-on">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)}
+						</div>
+						<h1>{title}</h1>
+						<div class="author">By {author}</div>
+					</div>
+					<div class="project-links">
+						<a href={github} target="_blank" class="github-link">
+							<svg
+								viewBox="0 0 24 24"
+								width="20"
+								height="20"
+								style="display: inline; vertical-align: middle; margin-right: 0.5em;"
+								fill="currentColor"
+							>
+								<path
+									d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.002 12.002 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+								></path>
+							</svg>
+							View on GitHub
+						</a>
+					</div>
+					<slot />
+					{tags && tags.length > 0 && (
+						<div class="tags">
+							{tags.map((tag) => (
+								<a href={`/tags/${tag}`} class="tag">
+									{tag}
+								</a>
+							))}
+						</div>
+					)}
+				</div>
+				{(prevProject || nextProject) && (
+					<nav class="post-navigation">
+						{prevProject && (
+							<a href={`/projects/${prevProject.id}`}>
+								← {prevProject.data.title}
+							</a>
+						)}
+						{nextProject && (
+							<a href={`/projects/${nextProject.id}`} class="next-post">
+								{nextProject.data.title} →
+							</a>
+						)}
+					</nav>
+				)}
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
