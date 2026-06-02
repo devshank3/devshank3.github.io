@@ -2,7 +2,7 @@
 title: "Server-Sent Events in .NET 10 with C# Client"
 author: 'Shank'
 description: 'Server sent events in .NET 10'
-pubDate: 'Mar 16 2026'
+pubDate: 'March 16 2026'
 heroImage: '../../assets/server-sent-events.jpg'
 tags: ['dotnet', 'server-sent-events'] 
 ---

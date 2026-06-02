@@ -1,183 +1,113 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		
-		<!-- Hamburger Button for Mobile -->
-		<button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>
+<header
+	class="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80"
+>
+	<nav class="mx-auto flex max-w-5xl items-center justify-between gap-2 px-4 py-3 sm:px-6">
+		<a
+			href="/"
+			class="text-base font-bold tracking-tight text-zinc-900 transition-colors hover:text-accent-600 dark:text-zinc-100 dark:hover:text-accent-400"
+		>
+			{SITE_TITLE}
+		</a>
 
-		<div class="internal-links" id="mobile-menu">
+		<!-- Desktop nav -->
+		<div class="hidden items-center gap-1 md:flex">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/projects">Projects</HeaderLink>
 			<HeaderLink href="/tags">Tags</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
-		<div class="social-links">
-			<a href="https://github.com/devshank3" target="_blank">
-				<span class="sr-only">Go to my GitHub repo</span>
-				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-					><path
+
+		<div class="flex items-center gap-1">
+			<a
+				href="https://github.com/devshank3"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+			>
+				<span class="sr-only">Go to my GitHub profile</span>
+				<svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
+					<path
 						fill="currentColor"
 						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-					></path></svg
-				>
+					></path>
+				</svg>
 			</a>
+
+			<ThemeToggle />
+
+			<!-- Hamburger (mobile) -->
+			<button
+				id="hamburger-btn"
+				type="button"
+				aria-label="Toggle navigation menu"
+				aria-expanded="false"
+				class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 md:hidden dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+			>
+				<svg id="icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+					<line x1="3" y1="6" x2="21" y2="6"></line>
+					<line x1="3" y1="12" x2="21" y2="12"></line>
+					<line x1="3" y1="18" x2="21" y2="18"></line>
+				</svg>
+				<svg id="icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
 		</div>
 	</nav>
+
+	<!-- Mobile menu -->
+	<div
+		id="mobile-menu"
+		class="grid grid-rows-[0fr] overflow-hidden transition-all duration-300 ease-in-out md:hidden"
+	>
+		<div class="min-h-0">
+			<div class="flex flex-col gap-1 border-t border-zinc-200 px-4 py-3 dark:border-zinc-800">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Blog</HeaderLink>
+				<HeaderLink href="/projects">Projects</HeaderLink>
+				<HeaderLink href="/tags">Tags</HeaderLink>
+				<HeaderLink href="/about">About</HeaderLink>
+			</div>
+		</div>
+	</div>
 </header>
 
 <script>
 	const hamburgerBtn = document.getElementById('hamburger-btn');
 	const mobileMenu = document.getElementById('mobile-menu');
+	const iconOpen = document.getElementById('icon-open');
+	const iconClose = document.getElementById('icon-close');
+
+	function closeMenu() {
+		mobileMenu?.classList.remove('grid-rows-[1fr]');
+		mobileMenu?.classList.add('grid-rows-[0fr]');
+		hamburgerBtn?.setAttribute('aria-expanded', 'false');
+		iconOpen?.classList.remove('hidden');
+		iconClose?.classList.add('hidden');
+	}
 
 	hamburgerBtn?.addEventListener('click', () => {
-		const isOpen = mobileMenu?.classList.toggle('open');
-		hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+		const isOpen = mobileMenu?.classList.contains('grid-rows-[1fr]');
+		if (isOpen) {
+			closeMenu();
+		} else {
+			mobileMenu?.classList.remove('grid-rows-[0fr]');
+			mobileMenu?.classList.add('grid-rows-[1fr]');
+			hamburgerBtn?.setAttribute('aria-expanded', 'true');
+			iconOpen?.classList.add('hidden');
+			iconClose?.classList.remove('hidden');
+		}
 	});
 
-	// Close menu when a link is clicked
-	const menuLinks = mobileMenu?.querySelectorAll('a');
-	menuLinks?.forEach(link => {
-		link.addEventListener('click', () => {
-			mobileMenu?.classList.remove('open');
-			hamburgerBtn?.setAttribute('aria-expanded', 'false');
-		});
+	mobileMenu?.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', closeMenu);
 	});
 </script>
-
-<style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-		position: sticky;
-		top: 0;
-		z-index: 100;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-	}
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1em;
-	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-		white-space: nowrap;
-	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
-	}
-	.social-links,
-	.social-links a {
-		display: flex;
-	}
-
-	.social-links a {
-		gap: 0;
-		padding: 0.5em;
-	}
-
-	/* Hamburger Button */
-	.hamburger {
-		display: none;
-		flex-direction: column;
-		background: none;
-		border: none;
-		cursor: pointer;
-		padding: 0.5em;
-		gap: 0.4em;
-		margin-left: auto;
-	}
-
-	.hamburger span {
-		width: 25px;
-		height: 3px;
-		background-color: rgb(var(--black));
-		border-radius: 2px;
-		transition: all 0.3s ease-in-out;
-		display: block;
-	}
-
-	.hamburger[aria-expanded="true"] span:nth-child(1) {
-		transform: rotate(45deg) translate(10px, 10px);
-	}
-
-	.hamburger[aria-expanded="true"] span:nth-child(2) {
-		opacity: 0;
-	}
-
-	.hamburger[aria-expanded="true"] span:nth-child(3) {
-		transform: rotate(-45deg) translate(7px, -7px);
-	}
-
-	.internal-links {
-		display: flex;
-		gap: 0;
-	}
-
-	/* Mobile Styles */
-	@media (max-width: 720px) {
-		nav {
-			flex-wrap: wrap;
-		}
-
-		.hamburger {
-			display: flex;
-		}
-
-		.internal-links {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			right: 0;
-			flex-direction: column;
-			background: white;
-			box-shadow: 0 8px 16px rgba(var(--black), 10%);
-			max-height: 0;
-			overflow: hidden;
-			transition: max-height 0.3s ease-in-out;
-		}
-
-		.internal-links.open {
-			max-height: 400px;
-		}
-
-		.internal-links :global(a) {
-			padding: 1em 1.5em;
-			border-bottom: none;
-			border-left: 4px solid transparent;
-		}
-
-		.internal-links :global(a.active) {
-			border-left-color: var(--accent);
-			border-bottom: none;
-		}
-
-		.social-links {
-			display: none;
-		}
-	}
-</style>

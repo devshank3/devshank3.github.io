@@ -1,8 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE } from '../consts';
 
 const posts = await getCollection('blog');
@@ -19,53 +17,25 @@ for (const post of posts) {
 const tags = Array.from(tagMap.keys()).sort();
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={`Tags | ${SITE_TITLE}`} description="Browse all tags used in the blog" />
-        <style>
-            main {
-                width: 100%;
-                max-width: 720px;
-                margin: 0 auto;
-                padding: 2em 1em;
-            }
-            .tags-list {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1em;
-                list-style: none;
-                padding: 0;
-                margin: 2em 0;
-            }
-            .tags-list li {
-                background: #f0f4ff;
-                border-radius: 8px;
-                padding: 0.5em 1em;
-            }
-            .tags-list a {
-                text-decoration: none;
-                color: #2a4d9b;
-                font-weight: bold;
-            }
-            .tags-list a:hover {
-                text-decoration: underline;
-                color: #1d3557;
-            }
-        </style>
-    </head>
-    <body>
-        <Header />
-        <main>
-            <h1>Tags</h1>
-            <ul class="tags-list">
-                {tags.map(tag => (
-                    <li>
-                        <a href={`/tags/${tag}`}>{tag} ({tagMap.get(tag).length})</a>
-                    </li>
-                ))}
-            </ul>
-        </main>
-        <Footer />
-    </body>
-</html>
+<BaseLayout title={`Tags | ${SITE_TITLE}`} description="Browse all tags used in the blog">
+    <section class="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+        <header class="mb-10">
+            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Tags</h1>
+            <p class="mt-2 text-zinc-600 dark:text-zinc-400">Browse posts by topic.</p>
+        </header>
+
+        <div class="flex flex-wrap gap-3">
+            {tags.map((tag) => (
+                <a
+                    href={`/tags/${tag}`}
+                    class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 transition-all hover:-translate-y-0.5 hover:border-accent-400 hover:text-accent-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-accent-500 dark:hover:text-accent-400"
+                >
+                    <span class="text-accent-500">#</span>{tag}
+                    <span class="rounded-full bg-zinc-100 px-1.5 text-xs text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                        {tagMap.get(tag).length}
+                    </span>
+                </a>
+            ))}
+        </div>
+    </section>
+</BaseLayout>

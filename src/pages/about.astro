@@ -7,53 +7,55 @@ import Layout from '../layouts/BlogPost.astro';
 	title="About Me"
 	description="About me page for my personal blog built with Astro."
 	pubDate={new Date('February 11 2026')}
+	author="Shankar Hariharan"
 	heroImage={AboutHeroImage}
 >
-	<div class="space-y-6">
-		<section>
-			<h4 class="text-2xl font-bold mb-4">Hi, I’m Shankar Hariharan 👋</h4>
-			<p class="text-lg text-gray-700 leading-relaxed mb-4">
-				I am a software engineer at Siemens Healthineers, working in the Magnetic Resonance (MR) domain. I’m part of the <a href="https://www.siemens-healthineers.com/magnetic-resonance-imaging/technologies-and-innovations/my-exam-companion" target="_blank" class="text-blue-600 hover:underline">myExam Companion</a> product stack, focusing on scanner-side software that enhances MRI workflow efficiency and usability.
-			</p>
-			
-			<p class="text-lg text-gray-700 leading-relaxed mb-4">
-				I’m passionate about technology and enjoy solving complex, real-world problems—especially at the intersection of medical imaging and software engineering.
-			</p>
-			
-			<div class="mb-4">
-				<h4 class="text-xl font-semibold mb-2">Primary Tech Stack</h4>
-				<ul class="list-disc list-inside text-gray-700 mb-4">
-					<li>ASP.NET Core</li>
-					<li>.NET</li>
-					<li>Azure</li>
-					<li>PostgreSQL</li>
-					<li>WPF</li>
-					<li>Complementary frontend frameworks</li>
-				</ul>
+	<h2>Hi, I'm Shankar Hariharan 👋</h2>
+	<p>
+		I am a software engineer at Siemens Healthineers, working in the Magnetic Resonance (MR)
+		domain. I'm part of the
+		<a
+			href="https://www.siemens-healthineers.com/magnetic-resonance-imaging/technologies-and-innovations/my-exam-companion"
+			target="_blank"
+			rel="noopener noreferrer">myExam Companion</a
+		> product stack, focusing on scanner-side software that enhances MRI workflow efficiency and usability.
+	</p>
 
-				<h4 class="text-xl font-semibold mb-2">Personal Projects & Exploration</h4>
-				<ul class="list-disc list-inside text-gray-700">
-					<li>Python</li>
-					<li>React</li>
-					<li>Astro</li>
-					<li>Computer Vision</li>
-				</ul>
-			</div>
-			
-			<p class="text-lg text-gray-700 leading-relaxed mb-4">
-				I hold a Bachelor’s degree in Electronics and Instrumentation Engineering from Vellore Institute of Technology (VIT).
-			</p>
-		</section>
+	<p>
+		I'm passionate about technology and enjoy solving complex, real-world problems — especially at
+		the intersection of medical imaging and software engineering.
+	</p>
 
-		<section>
-			<h4 class="text-2xl font-semibold mb-4">Let’s Connect</h4>
-			<p class="text-lg text-gray-700 leading-relaxed mb-4">
-				Feel free to reach out using the links below—I’d love to connect, collaborate, or exchange ideas.
-			</p>
-		</section>
+	<h3>Primary Tech Stack</h3>
+	<ul>
+		<li>ASP.NET Core</li>
+		<li>.NET</li>
+		<li>Azure</li>
+		<li>PostgreSQL</li>
+		<li>WPF</li>
+		<li>Complementary frontend frameworks</li>
+	</ul>
 
-		<section class="border-t pt-4">
-			<p class="text-gray-600 italic">Thank you for visiting my page!</p>
-		</section>
-	</div>
+	<h3>Personal Projects &amp; Exploration</h3>
+	<ul>
+		<li>Python</li>
+		<li>React</li>
+		<li>Astro</li>
+		<li>Computer Vision</li>
+	</ul>
+
+	<p>
+		I hold a Bachelor's degree in Electronics and Instrumentation Engineering from Vellore Institute
+		of Technology (VIT).
+	</p>
+
+	<h3>Let's Connect</h3>
+	<p>
+		Feel free to reach out using the links below — I'd love to connect, collaborate, or exchange
+		ideas.
+	</p>
+
+	<hr />
+
+	<p><em>Thank you for visiting my page!</em></p>
 </Layout>

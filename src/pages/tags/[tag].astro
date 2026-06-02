@@ -1,8 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
 import { SITE_TITLE } from '../../consts';
 
 export async function getStaticPaths() {
@@ -20,31 +19,43 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.props as { tag: string };
-const posts = (await getCollection('blog')).filter(post => post.data.tags?.includes(tag));
+const posts = (await getCollection('blog'))
+    .filter(post => post.data.tags?.includes(tag))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={`Tag: ${tag} | ${SITE_TITLE}`} description={`Posts tagged with "${tag}"`} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <h1>Posts tagged with "<span style="color:#2a4d9b">{tag}</span>"</h1>
-            {posts.length > 0 ? (
-                <ul>
-                    {posts.map(post => (
-                        <li>
-                            <a href={`/blog/${post.id}`}>{post.data.title}</a>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No posts found for this tag.</p>
-            )}
-            <p style="margin-top:2em;"><a href="/tags">← All Tags</a></p>
-        </main>
-        <Footer />
-    </body>
-</html>
+<BaseLayout title={`#${tag} | ${SITE_TITLE}`} description={`Posts tagged with "${tag}"`}>
+    <section class="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+        <a href="/tags" class="text-sm font-medium text-accent-600 hover:underline dark:text-accent-400">
+            ← All tags
+        </a>
+        <h1 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+            <span class="text-accent-500">#</span>{tag}
+        </h1>
+        <p class="mt-2 text-zinc-600 dark:text-zinc-400">
+            {posts.length} {posts.length === 1 ? 'post' : 'posts'}
+        </p>
+
+        {posts.length > 0 ? (
+            <ul class="mt-8 divide-y divide-zinc-200 dark:divide-zinc-800">
+                {posts.map((post) => (
+                    <li>
+                        <a
+                            href={`/blog/${post.id}/`}
+                            class="group flex flex-col gap-1 py-4 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                        >
+                            <span class="font-medium text-zinc-900 group-hover:text-accent-600 dark:text-zinc-100 dark:group-hover:text-accent-400">
+                                {post.data.title}
+                            </span>
+                            <span class="shrink-0 text-sm text-zinc-500 dark:text-zinc-400">
+                                <FormattedDate date={post.data.pubDate} />
+                            </span>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        ) : (
+            <p class="mt-8 text-zinc-600 dark:text-zinc-400">No posts found for this tag.</p>
+        )}
+    </section>
+</BaseLayout>
